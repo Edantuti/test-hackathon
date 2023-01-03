@@ -34,6 +34,17 @@
   }
 }
 
+.header {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+  position: relative;
+	background-color: inherit;
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+	padding: 15px;
+}
+
 img {
 	width: 70px;
 	margin: 1.5rem;
@@ -63,11 +74,10 @@ input:focus {
 	width: 80%;
 }
 
-button, .button-unselect {
+.convert, .button-unselect {
 	font: inherit;
 	font-weight: bold;
 	padding: 10px;
-	border: none;
 	outline: none;
 	-webkit-transition: 0.2s;
 	transition: 0.2s;
@@ -77,11 +87,19 @@ button, .button-unselect {
 }
 
 .button-select {
+	font: inherit;
+	font-weight: bold;
+	padding: 10px;
+	outline: none;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+	background-color: inherit;
 	background-color: #E07B4D;
 	color: #120F16;
+	border: 2px solid #E07B4D;
 }
 
-button:hover:not(:focus) {
+.convert:hover:not(:focus) {
 	color: #E07B4D;
 }
 

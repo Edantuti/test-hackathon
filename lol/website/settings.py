@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-f&(i4zsh$ux15-=e0%-t@@$i@_-&3sy@9=$bood&cmh2u=q---
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "192.168.43.19", "0.0.0.0"]
+ALLOWED_HOSTS = ['localhost','127.0.0.1','.ngrok.io','*']
+
 
 
 # Application definition
@@ -134,10 +135,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # My changes
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
-
 
 CORS_ALLOW_METHODS = [
     "DELETE",

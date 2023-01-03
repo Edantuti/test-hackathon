@@ -1,5 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
+import AudioPlayer from './AudioPlayer';
+import tracks from './tracks';
 // import axios from 'axios';
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
 			method: 'POST',
 			mode: 'cors',
 			body: formData,
-		})
+		}).then()
 
 		// Using axios to POST
 		// axios.post(url, formData, config).then((response) => {
@@ -42,15 +44,13 @@ function App() {
 
 	function handleUrlSubmit(event) {
 		event.preventDefault();
-		const url = 'http://0.0.0.0:8000/api/';
-
+		const url = 'http://0.0.0.0:8000/api/text/';	
+		const formData = new FormData();
+		formData.append('text', yturl.value)
 		fetch (url, {
 			method: 'POST',
 			mode: 'cors',
-			headers: {
-				'content-type': 'text/plain',
-			},
-			body: yturl,
+			body: formData,
 		})
 	}
 
@@ -81,6 +81,13 @@ function App() {
 	}
 
 	return (
+		<>
+
+		<div className="header">
+		ASAP Logo
+		<i class="fa fa-bars"></i>
+		</div>
+
     <div className="App">
 
 		<button onClick={handleVideoClick} className={isShown ? "button-select" : "button-unselect"}>
@@ -91,30 +98,39 @@ function App() {
 		</button>
 			{isShown ? (
 				<>
-				<div className="center">
+			
 				{fileData()}
 				<form onSubmit={handleUploadSubmit}>
 					<input type="file" className="video-upload" onChange={handleUploadChange}/>
 				<p>
-					<button type="submit">Upload</button>
+					<button type="submit" className="convert">Convert</button>
 				</p>
 					
 				</form>
-				</div>
 				</>
 			) : (
 				<>
+
 				<h1>Paste the URL</h1>
 				<form onSubmit = {handleUrlSubmit}>
 					<input type="text" className = "yturl" onChange={handleUrlChange} placeholder="Paste YouTube URL to convert it to audio file"/>
 					<p>
-					<button type="submit">Submit</button>
+					<button type="submit" className="convert">Convert</button>
 					</p>
 				</form>
 				</>
 			)}
 
     </div>
+		<p>
+		<h1>Recent</h1>
+		<AudioPlayer tracks={tracks} />
+		</p>
+		<p>
+		<h1>Recent</h1>
+		<AudioPlayer tracks={tracks} />
+		</p>
+		</>
   );
 }
 
