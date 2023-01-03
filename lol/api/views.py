@@ -49,5 +49,9 @@ class VideoData(APIView):
 
 class TextData(APIView):
     def post(self, request):
-        print(request.data)
+        # print(request.data)
+        url = request.data["url"]
+        audio_dir = f"{settings.BASE_DIR}/media/audio"
+        video_dir = f"{settings.BASE_DIR}/media/video"
+        os.system(f"ytdlp f ba -o {video_dir}\"%(title)s\" {url}")
         return Response(data=request.data)

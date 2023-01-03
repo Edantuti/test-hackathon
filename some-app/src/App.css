@@ -35,14 +35,22 @@
 }
 
 .header {
+	font-size: calc(13px + 2vmin);
 	display: flex;
 	align-items: center;
 	flex-direction: row;
 	justify-content: space-between;
   position: relative;
 	background-color: inherit;
-  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2); */
 	padding: 15px;
+}
+
+.main {
+	background-color: inherit;
+	padding: 15px;
+	border-radius: 15px;
+	box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
 }
 
 img {

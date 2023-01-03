@@ -88,7 +88,7 @@ function App() {
 		<i class="fa fa-bars"></i>
 		</div>
 
-    <div className="App">
+    <div className="main">
 
 		<button onClick={handleVideoClick} className={isShown ? "button-select" : "button-unselect"}>
 			Upload a Video
@@ -120,16 +120,7 @@ function App() {
 				</form>
 				</>
 			)}
-
     </div>
-		<p>
-		<h1>Recent</h1>
-		<AudioPlayer tracks={tracks} />
-		</p>
-		<p>
-		<h1>Recent</h1>
-		<AudioPlayer tracks={tracks} />
-		</p>
 		</>
   );
 }
