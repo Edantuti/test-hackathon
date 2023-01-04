@@ -54,9 +54,11 @@ function AudioPlayer ({ tracks }) {
 	// Check play-pause, depends on isPlaying
 	useEffect(() => {
 		if (isPlaying) {
-			audioRef.current.play();
-		} else {
 			audioRef.current.pause();
+			setIsPlaying(!isPlaying);
+		} else {
+			audioRef.current.play();
+			setIsPlaying(!isPlaying);
 		}
 	}, [isPlaying]);
 
