@@ -85,7 +85,7 @@ function Convert () {
 			&nbsp;Upload Video File&nbsp;&nbsp;
 		</button>
 		<button onClick={handleUrlClick} className={isShown ? "button-unselect" : "button-select"}>
-			Paste YouTube link
+			&nbsp;&nbsp;&nbsp;&nbsp;Paste URL link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</button>
 			{isShown ? (
 				<>
@@ -102,7 +102,7 @@ function Convert () {
 				<>
 				<h1>Paste the URL</h1>
 				<form onSubmit = {handleUrlSubmit}>
-					<input type="text" className = "yturl" onChange={handleUrlChange} placeholder="Paste YouTube URL to convert it to audio file"/>
+					<input type="text" className = "yturl" onChange={handleUrlChange} placeholder="Paste URL to convert it to audio file"/>
 					<p>
 					<button type="submit" className="convert">Convert</button>
 					</p>

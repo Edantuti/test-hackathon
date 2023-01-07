@@ -4,11 +4,11 @@ import './styles/App.css';
 import AudioPlayer from './components/AudioPlayer';
 import Convert from './components/Convert';
 import tracks from './components/tracks';
-// import axios from 'axios';
 
 function App() {
 
 	const [isConvert, setIsConvert] = useState(true);
+	const [isSignIn, setIsSignIn] = useState(false);
 
 	return (
 		<>
@@ -18,7 +18,8 @@ function App() {
 		<nav>
 			<ul role="menubar" aria-haspopup="true">
 				<li><a href="/">Sign in</a></li>
-				<li><a onClick={(e) => setIsConvert(!isConvert)}>{isConvert ? "Listen" : "Convert"}</a></li>
+				<li><a onClick={(e) => setIsConvert(!isConvert)}>{isConvert ? "Listen" : "Convert"}</a>
+		</li>
 			</ul>
 		</nav>
 		</div>
@@ -26,7 +27,7 @@ function App() {
 		{isConvert ? (
 			<Convert />
 		) : (
-			<AudioPlayer tracks={tracks}/>
+			<AudioPlayer tracks={tracks} />
 		)}
 		<br/>
 		</>

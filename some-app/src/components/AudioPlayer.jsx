@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AudioControls from "./AudioControls";
 import '../styles/AudioPlayer.css';
+import { ReactComponent as RepeatAll } from '../assets/repeat_all.svg';
+import { ReactComponent as RepeatOne } from '../assets/repeat_one.svg';
+import { ReactComponent as Shuffle } from '../assets/shuffle.svg';
 
 const AudioPlayer = ({ tracks }) => {
 	// State
 	const [trackIndex, setTrackIndex] = useState(0);
 	const [trackProgress, setTrackProgress] = useState(0);
-	const [isPlaying, setIsPlaying] = useState(0);
+	const [isPlaying, setIsPlaying] = useState(false);
 
+	const [isRepeat, setIsRepeat] = useState('repeat_all')
 	const [comment, setComment] = useState('');
 
 	const { title, artist, color, image, audioSrc } = tracks[trackIndex];
@@ -15,7 +19,7 @@ const AudioPlayer = ({ tracks }) => {
 	// Refs
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
-  const isReady = useRef();
+  const isReady = useRef(false);
 
 	const { duration } = audioRef.current;
 
@@ -29,7 +33,19 @@ const AudioPlayer = ({ tracks }) => {
 
 		intervalRef.current = setInterval(() => {
 			if (audioRef.current.ended) {
-				toNextTrack();
+				switch(isRepeat){
+					case "repeat_all":
+						toNextTrack();
+						break;
+					case "repeat_one":
+						audioRef.current.currentTime = 0;
+						setTrackProgress(audioRef.current.currentTime);
+						audioRef.current.play();
+						break;
+					case "shuffle":
+						console.log("TODO shuffle ");
+						break;
+				}
 			} else {
 				setTrackProgress(audioRef.current.currentTime);
 			}
@@ -90,12 +106,15 @@ const AudioPlayer = ({ tracks }) => {
 		}
 	}, [trackIndex]);
 
-	// pause and clean up on unmount
+	// keep player paused when first entered
 	useEffect(() => {
+		audioRef.current.pause();
+		setIsPlaying(false);
+		clearInterval(intervalRef.current);
 		return () => {
-			audioRef.current.pause();
-			clearInterval(intervalRef.current);
-		}
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    };
 	}, []);
 
 	const getTime = (time) => {
@@ -130,6 +149,34 @@ const AudioPlayer = ({ tracks }) => {
 		console.log("Comment is : "+comment.value)
 	}
 
+	function songRepeat() {
+		switch(isRepeat) {
+			case "repeat_all":
+				setIsRepeat('repeat_one');
+				// console.log('Will repeat one song now')
+				break;
+			case "repeat_one":
+				setIsRepeat('shuffle');
+				console.log('will shuffle all song now')
+				break;
+			case "shuffle":
+				setIsRepeat('repeat_all');
+				// console.log('will repeat all songs now')
+				break;
+		}
+	}
+
+	function repeatIcon() {
+		switch(isRepeat) {
+			case "repeat_all":
+				return <RepeatAll />;
+			case "repeat_one":
+				return <RepeatOne />;
+			case "shuffle":
+				return <Shuffle />;
+		}
+	}
+
 	return (
 		<>
 		<div className="audio-player">
@@ -141,11 +188,18 @@ const AudioPlayer = ({ tracks }) => {
 			  />
 		    <h2 className="title">{title}</h2>
         <h3 className="artist">{artist}</h3>
+			</div>
+				<button onClick={songRepeat}>
+				{repeatIcon()}
+				</button>
+		<div className="track-info">
 				<AudioControls
 					isPlaying={isPlaying}
 					onPrevClick={toPrevTrack}
 					onNextClick={toNextTrack}
 					onPlayPauseClick={setIsPlaying}
+					isRepeat={isRepeat}
+					repeatIcon={repeatIcon}
 				/>
 				{getTime(trackProgress)} / {getDuration()}
 				<input
