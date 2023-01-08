@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from "react";
+
 import alag_aasmaan from "../assets/Anuv Jain - ALAG AASMAAN (a song on the ukulele).mp3";
 import imgSrc from "../assets/img1.png";
 import viator from "../assets/Viator.mp3";
 import imgSrc2 from "../assets/img2.png";
-import defaultImg from "../assets/default_cover.jpg"
+import defaultImg from "../assets/default_cover.jpg";
 
 const trackInfo = [
 	{

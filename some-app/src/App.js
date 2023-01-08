@@ -19,7 +19,7 @@ function App() {
 		<nav>
 			<ul role="menubar" aria-haspopup="true">
 				<li><a href="#">Sign in</a></li>
-				<li><a onClick={(e) => setIsConvert(!isConvert)}>{isConvert ? "Listen" : "Convert"}</a>
+				<li><a href="#" onClick={(e) => setIsConvert(!isConvert)}>{isConvert ? "Listen" : "Convert"}</a>
 		</li>
 			</ul>
 		</nav>
