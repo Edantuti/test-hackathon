@@ -2,21 +2,20 @@ import alag_aasmaan from "../assets/Anuv Jain - ALAG AASMAAN (a song on the ukul
 import imgSrc from "../assets/img1.png";
 import viator from "../assets/Viator.mp3";
 import imgSrc2 from "../assets/img2.png";
+import defaultImg from "../assets/default_cover.jpg"
 
 const trackInfo = [
 	{
 		title: "Alag Aasmaan - A Very Long Title Because Podcasts Love to do This",
 		artist: "Anuv Jain",
 		audioSrc: alag_aasmaan,
-		image: imgSrc,
-		color: "#00aeb0",
+		image: defaultImg,
 	},
 	{
 		title: "Viator",
 		artist: "Rionos",
 		audioSrc: viator,
-		image: imgSrc2,
-		color: "#C45F7E",
+		image: defaultImg,
 	},
 ]
 

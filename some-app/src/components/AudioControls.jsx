@@ -43,7 +43,6 @@ function AudioControls({
 	return (
 		<>
 		<div className="audio-controls">
-		<button>{repeatIcon()}</button>
 		<button
 				type="button"
 				className="prev"

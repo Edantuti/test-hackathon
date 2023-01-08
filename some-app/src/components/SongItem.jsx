@@ -1,21 +1,28 @@
 import React from "react";
+import image from "../assets/img1.png";
 
-function SongItem () {
-	const songSelectHandler = async () => {
-		await setCurrent
+import '../styles/SongItem.css';
+
+function SongItem ({ tracks }) {
+
+	function songSelectHandler() {
+		console.log('TODO Do something when a song is selected')
 	}
+
 	return (
 		<>
-		TODO: Song Item
-		<SongContainer onClick={songSelectHandler}>
-			<img src={image} alt={`track artwork for ${title} by ${artist}`}/>
-			<SongDescription>
-				<h1>{title}</h1>
-				<h2>{artist}</h2>
-			</SongDescription>
-		</SongContainer>
+		<div className="song-item" onClick={songSelectHandler}>
+			<img align="left" src={tracks.image} alt={`track artwork for ${tracks.title} by ${tracks.artist}`}/>
+			<br/>
+			<div className="song-item-title">{tracks.title}</div>
+			<div className="song-item-artist">{tracks.artist}</div>
+			<a href="#">Play Button</a>
+		</div>
 		</>
 	)
 }
+
+
+
 
 export default SongItem;

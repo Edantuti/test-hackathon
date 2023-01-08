@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SongItem from "./SongItem";
+import trackInfo from "./tracks";
 
 function Convert () {
 
@@ -41,9 +43,9 @@ function Convert () {
 
 	function handleUrlSubmit(event) {
 		event.preventDefault();
-		const url = 'http://0.0.0.0:8000/api/text/';	
+		const url = 'http://0.0.0.0:8000/api/ytdlp/';	
 		const formData = new FormData();
-		formData.append('text', yturl.value)
+		formData.append('url', yturl.value)
 		fetch (url, {
 			method: 'POST',
 			mode: 'cors',
@@ -111,14 +113,14 @@ function Convert () {
 			)}
 		<br/>
 		</div>
-		<h1>Recent Audio here</h1>
+		<h1 style={{textAlign: "center", fontFamily: "'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"}}>Recent Audio here</h1>
 		<div className="recent-audio">
-			<div className="item"></div>
-			<div className="item"></div>
-			<div className="item"></div>
-			<div className="item"></div>
-			<div className="item"></div>
-			<div className="item"></div>
+		{trackInfo.map((trackInfo) => (
+			<div className="item">
+			<SongItem tracks={trackInfo} /> 
+			</div>
+			))
+		}
 		</div>
 	</>
 	)

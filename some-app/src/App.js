@@ -4,6 +4,7 @@ import './styles/App.css';
 import AudioPlayer from './components/AudioPlayer';
 import Convert from './components/Convert';
 import tracks from './components/tracks';
+import SongLibrary from './components/SongLibrary';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
 		<strong>ASAP</strong>
 		<nav>
 			<ul role="menubar" aria-haspopup="true">
-				<li><a href="/">Sign in</a></li>
+				<li><a href="#">Sign in</a></li>
 				<li><a onClick={(e) => setIsConvert(!isConvert)}>{isConvert ? "Listen" : "Convert"}</a>
 		</li>
 			</ul>
@@ -25,9 +26,13 @@ function App() {
 		</div>
 
 		{isConvert ? (
+			<>
 			<Convert />
+			</>
 		) : (
+			<>
 			<AudioPlayer tracks={tracks} />
+			</>
 		)}
 		<br/>
 		</>
