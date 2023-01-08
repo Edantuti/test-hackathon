@@ -1,0 +1,12 @@
+{
+        title: "Alag Aasmaan - A Very Long Title Because Podcasts Love to do This",
+        artist: "Anuv Jain",
+        audioSrc: "https://0x0.st/o7-L.mp3",
+        image: defaultImg,
+},
+{
+        title: "Viator",
+        artist: "Rionos",
+        audioSrc: viator,
+        image: defaultImg,
+},

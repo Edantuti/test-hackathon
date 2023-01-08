@@ -35,4 +35,4 @@ typings/
 .yarn-integrity
 
 # Assets
-/src/assets
+# /src/assets
